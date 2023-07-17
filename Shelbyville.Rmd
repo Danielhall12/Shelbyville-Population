@@ -1,0 +1,45 @@
+---
+title: "Population Growth"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+
+```{r}
+calculate_annual_growth <- function(year_one,year_two,pop_y1, pop_y2,city) {
+  annual_growth <- (((pop_y2 - pop_y1) / pop_y1) * 100) / (year_two-year_one)
+  message <- paste("From", year_one, "to", year_two, "the population of", city, "grew by approximately", annual_growth, "% each year.")
+  print(message)
+  return(annual_growth)
+}
+
+city_name <- "Shelbyville, Ky"
+# earliest population
+# 1990
+population_one <- 6449
+# recent population
+# 2021
+population_two <- 17379
+
+population_change <- population_two - population_one
+print(population_change)
+
+# Calculate percentage growth
+percentage_gr <- (((population_two - population_one)/ population_one) * 100)
+
+
+#Calculate annual growth
+annual_gr <- percentage_gr/31
+
+calculate_annual_growth(1990, 2021, population_one, population_two, city_name)
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
